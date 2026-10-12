@@ -195,18 +195,20 @@
         <h2 class="section-title" id="resume-title">Resume</h2>
 
         <div class="section-body">
-          <div class="actions" data-link-wrap="resume">
-            <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">View resume <span class="btn-note">PDF, one page</span></a>
-            <a class="text-link" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" download>Download</a>
-          </div>
-
-          <!-- Closed by default. The image is sized so the whole page fits on screen. -->
-          <details class="resume-preview" data-link-wrap="resume">
-            <summary>Preview the resume here</summary>
-            <a data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">
-              <img data-src="assets/resume/Jack-Liu-Resume-preview.png" alt="Preview of Jack Liu's one-page resume. Select to open the PDF." width="1275" height="1649">
+          <!-- The whole page is shown as one sheet: nothing scrolls inside the frame. -->
+          <figure class="window" data-link-wrap="resume">
+            <div class="window-bar" aria-hidden="true">
+              <span class="window-dots"><i></i><i></i><i></i></span>
+              <span class="window-title">Resume — Jack Liu</span>
+            </div>
+            <a class="window-body" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <img src="assets/resume/Jack-Liu-Resume-preview.png" alt="Jack Liu's one-page resume. Select to open the PDF." width="1275" height="1649" loading="lazy" decoding="async">
             </a>
-          </details>
+            <figcaption class="window-foot">
+              <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" download>Download resume</a>
+              <a class="text-link" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">Open in a new tab <span aria-hidden="true">↗</span></a>
+            </figcaption>
+          </figure>
 
           <div class="subsection" data-part="education" hidden>
             <h3 class="label">Education</h3>

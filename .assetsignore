@@ -1,0 +1,10 @@
+# Files in the repository that are not part of the public website.
+# Same format as .gitignore.
+.git
+.gitignore
+.assetsignore
+.claude
+review
+worker
+wrangler.jsonc
+README.md

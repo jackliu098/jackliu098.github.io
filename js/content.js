@@ -27,9 +27,9 @@ window.SITE = {
   },
 
   /* ---- Contact form --------------------------------------------------------
-     The form posts to this address, which is the function in
-     functions/api/contact.js. It only appears once that function is set up
-     (see README). Until then visitors get the email and LinkedIn options. */
+     The form posts to this address, which is answered by worker/contact.js
+     on Cloudflare. The form only appears once that is set up (see README).
+     Until then visitors get the email and LinkedIn options. */
   contact: {
     endpoint: "/api/contact",
   },
@@ -135,18 +135,21 @@ window.SITE = {
      and applying is not the same as being accepted. */
   involvement: [
     {
-      name: "InterVarsity Christian Fellowship",
-      text: "I take part in fellowship, Bible studies, and small- and large-group gatherings, and attended the Selah retreat at Lake Champion.",
-    },
-    {
-      name: "Epic Christian Fellowship",
-      text: "I take part in its gatherings.",
+      name: "InterVarsity and Epic Christian Fellowship",
+      text: "I take part in fellowship, Bible studies, and small- and large-group gatherings with both, and attended InterVarsity's Selah retreat at Lake Champion.",
     },
     {
       name: "Scholars of Finance",
       text: "I attend events and networking sessions when my schedule allows.",
     },
+    {
+      name: "Ascend",
+      text: "I have attended its workshops and networking sessions.",
+    },
   ],
+
+  // A sentence shown under the list. It states a plan, not a position you hold.
+  involvementNote: "I plan to take on a larger role in both Scholars of Finance and Ascend.",
 
   /* ---- Upcoming events ------------------------------------------------------
      Each event disappears from the site by itself the day after `ends`

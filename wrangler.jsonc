@@ -1,0 +1,17 @@
+// Cloudflare reads this file each time the site is published.
+{
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "jackliu098-github-io",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-01-01",
+
+  // Keep the variables and secrets you add in the dashboard when the site is republished.
+  "keep_vars": true,
+
+  // The website itself: every file in this folder except those listed in .assetsignore.
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  }
+}

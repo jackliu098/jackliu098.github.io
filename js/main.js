@@ -177,6 +177,9 @@
         );
       });
     }
+    if (involvement && hasItems(SITE.involvement) && SITE.involvementNote) {
+      involvement.appendChild(el("p", { class: "meta", text: SITE.involvementNote }));
+    }
     show("involvement", hasItems(SITE.involvement));
 
     // An event drops off the page the day after it ends. Nothing is claimed about attendance.
@@ -321,21 +324,6 @@
       { rootMargin: "-40% 0px -55% 0px" }
     );
     $$("main section[id]").forEach((section) => observer.observe(section));
-  }
-
-  /* ---------- Resume preview ----------
-     Opening the preview scrolls it to the top of the window, where the
-     page image is sized to fit without any further scrolling. */
-
-  function initResumePreview() {
-    const details = $(".resume-preview");
-    if (!details) return;
-    const image = $("img[data-src]", details);
-    details.addEventListener("toggle", () => {
-      if (!details.open) return;
-      if (image && !image.getAttribute("src")) image.src = local(image.dataset.src); // fetched on first open only
-      details.scrollIntoView({ block: "start" });
-    });
   }
 
   /* ---------- Contact button and dialog ---------- */
@@ -639,6 +627,5 @@
 
   initTheme();
   initNav();
-  initResumePreview();
   initContact();
 })();

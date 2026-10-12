@@ -1,6 +1,6 @@
 # jackjliu.com
 
-Personal site for Jack Liu. Plain HTML, CSS, and JavaScript with no build step. It is hosted on Cloudflare Pages, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
+Personal site for Jack Liu. Plain HTML, CSS, and JavaScript with no build step. It is hosted on Cloudflare, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
 
 ## Files
 
@@ -11,7 +11,9 @@ projects/specsight.html  The SpecSight slides, shown one after another.
 css/styles.css           All styling. Colors and fonts are the variables at the top.
 js/content.js            Your content: links, work, experience, coursework, involvement, events, education.
 js/main.js               Builds the page from content.js and runs the contact dialog. Rarely needs editing.
-functions/api/contact.js The contact form's server side. Runs on Cloudflare, not in the browser.
+worker/                  The contact form's server side. Runs on Cloudflare, not in the browser.
+wrangler.jsonc           Tells Cloudflare how to publish the site and run the worker.
+.assetsignore            Files in this folder that should not be public on the website.
 assets/
   images/                Portrait and the Rutgers photo.
   resume/                Jack-Liu-Resume.pdf and its preview image.
@@ -29,7 +31,7 @@ From this folder:
 python3 -m http.server 4173
 ```
 
-Then open http://localhost:4173. Stop it with Ctrl+C. The contact form does not run in this preview, because its server side only exists on Cloudflare; the dialog shows the email and LinkedIn options instead.
+Then open http://localhost:4173. Stop it with Ctrl+C. The contact form does not run in this preview, because its server side only runs on Cloudflare; the dialog shows the email and LinkedIn options instead.
 
 ## Updating the site
 
@@ -57,7 +59,7 @@ Most content is in `js/content.js`. Each part has a short comment and, where use
 sips -s format png assets/resume/Jack-Liu-Resume.pdf --out assets/resume/Jack-Liu-Resume-preview.png -Z 1650
 ```
 
-Keep the resume to one page. The preview is sized to show a single page in full without scrolling.
+Keep the resume to one page. The Resume section shows that image as a single sheet inside a frame, with nothing to scroll inside it.
 
 **Replace the photo.** Save a square image over `assets/images/jack-liu.jpg`. 800 × 800 pixels is plenty.
 
@@ -73,19 +75,21 @@ The full business plan, the original 25-slide file, and the financial model are 
 
 The "Contact Jack" button opens a dialog. It always offers your email address, a copy button, and LinkedIn. It also shows a message form, but only once the form can really deliver: the site asks `/api/contact` whether it has been set up, and hides the form if not. A message is reported as sent only after the email service accepts it.
 
+The site runs on Cloudflare as a Worker named `jackliu098-github-io`. The code in `worker/` answers `/api/contact`; everything else is served straight from the files in this folder.
+
 To switch the form on:
 
 1. Create an account at [resend.com](https://resend.com) with the email address where you want to receive messages. The free plan was enough for a personal site when this was written; check their pricing page before relying on it.
 2. In Resend, create an API key.
-3. In the Cloudflare dashboard, open **Workers & Pages**, select this project, then **Settings → Variables and Secrets**, and add:
-   - `RESEND_API_KEY` as a **secret**: the key from step 2
-   - `CONTACT_TO` as text: the address that should receive messages
-4. Redeploy the site (push any change, or use **Deployments → Retry deployment**) so the function picks up the values.
+3. In the Cloudflare dashboard, open **Workers & Pages**, select `jackliu098-github-io`, then **Settings → Variables and Secrets**, and add both of these with the type **Secret**:
+   - `RESEND_API_KEY`: the key from step 2
+   - `CONTACT_TO`: the address that should receive messages
+4. Publish the site once more (push any change) so the worker picks up the values.
 5. Open the live site, select **Contact Jack**, and send yourself a message.
 
 Until you verify your own domain in Resend, its test sender delivers only to the address you signed up with, so use that same address for `CONTACT_TO`. If you later verify `jackjliu.com` in Resend, add `CONTACT_FROM` (for example `Jack Liu website <hello@jackjliu.com>`).
 
-The function checks every message on the server, rejects obvious bots, and limits repeated sends from one visitor. For stronger protection, add a rate-limiting rule for `/api/contact` in Cloudflare under **Security**.
+The worker checks every message on the server, rejects obvious bots, and limits repeated sends from one visitor. For stronger protection, add a rate-limiting rule for `/api/contact` in Cloudflare under **Security**.
 
 Never paste the API key into any file in this folder.
 
@@ -103,7 +107,7 @@ Cloudflare notices the push and republishes the site, usually within a minute. I
 ## How the hosting is set up
 
 - **Code:** GitHub repository `jackliu098/jackliu098.github.io`, branch `main`.
-- **Host:** a Cloudflare Pages project connected to that repository. No framework preset, no build command, default output directory. Cloudflare also runs the `functions` folder as the site's small server side.
-- **Domain:** `jackjliu.com` and `www.jackjliu.com` are attached under the project's **Custom domains**. Cloudflare manages the DNS records and HTTPS.
+- **Host:** a Cloudflare Worker named `jackliu098-github-io`, connected to that repository. Each push is published using `wrangler.jsonc`: the files in this folder become the website and `worker/` becomes its small server side.
+- **Domain:** `jackjliu.com` and `www.jackjliu.com` are attached to that Worker. Cloudflare manages the DNS records and HTTPS.
 
-Because the repository is named `jackliu098.github.io`, GitHub also publishes a copy at https://jackliu098.github.io. The contact form does not work on that copy, since GitHub cannot run the `functions` folder; visitors there get the email and LinkedIn options. To switch the copy off, open the repository's **Settings → Pages** on GitHub.
+Because the repository is named `jackliu098.github.io`, GitHub also publishes a copy at https://jackliu098.github.io. The contact form does not work on that copy, since GitHub cannot run the `worker` folder; visitors there get the email and LinkedIn options. To switch the copy off, open the repository's **Settings → Pages** on GitHub.

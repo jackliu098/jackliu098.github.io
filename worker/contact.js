@@ -1,16 +1,16 @@
 /* ==========================================================================
-   Contact form endpoint (Cloudflare Pages Function)  ->  /api/contact
+   Contact form endpoint  ->  /api/contact   (called from worker/index.js)
 
    GET   reports whether the form has been set up, so the site only shows a
          form that can actually deliver.
    POST  checks the message and hands it to Resend, which emails it to you.
          The site shows "Message sent" only when Resend accepts it.
 
-   Setup (see README): in the Cloudflare dashboard, open the Pages project,
-   then Settings > Variables and Secrets, and add:
+   Setup (see README): in the Cloudflare dashboard, open the Worker
+   "jackliu098-github-io", then Settings > Variables and Secrets, and add:
      RESEND_API_KEY   secret   an API key from resend.com
-     CONTACT_TO       text     the inbox that should receive messages
-     CONTACT_FROM     text     optional; defaults to Resend's test sender
+     CONTACT_TO       secret   the inbox that should receive messages
+     CONTACT_FROM     secret   optional; defaults to Resend's test sender
 
    No key or address is ever written in this file or sent to the browser.
    ========================================================================== */
@@ -45,11 +45,9 @@ function tooMany(ip) {
   return false;
 }
 
-export function onRequestGet({ env }) {
-  return json({ configured: isConfigured(env) });
-}
-
-export async function onRequestPost({ request, env }) {
+export async function handleContact(request, env) {
+  if (request.method === "GET" || request.method === "HEAD") return json({ configured: isConfigured(env) });
+  if (request.method !== "POST") return json({ ok: false, error: "method_not_allowed" }, 405);
   if (!isConfigured(env)) return json({ ok: false, error: "not_configured" }, 503);
 
   // Only accept posts that come from this site's own pages.

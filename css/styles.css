@@ -741,47 +741,67 @@ button {
 
 /* ---------- 7. Resume and contact ---------- */
 
-.resume-preview {
-  margin-top: 1.25rem;
+/* The resume sits in a framed "window": a title bar, the page itself, and a download bar. */
+.window {
+  max-width: 51rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-2);
 }
 
-.resume-preview summary {
-  display: inline-flex;
+.window-bar {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  font-size: 0.9375rem;
+  gap: 0.9rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.window-dots {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.window-dots i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.window-dots i:first-child {
+  background: var(--accent);
+}
+
+.window-title {
+  font-size: 0.75rem;
   font-weight: 500;
-  color: var(--ink);
-  cursor: pointer;
-  list-style: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.resume-preview summary::-webkit-details-marker {
-  display: none;
+.window-body {
+  display: block;
+  padding: clamp(0.75rem, 2.5vw, 1.25rem);
 }
 
-.resume-preview summary::before {
-  content: "+";
-  display: inline-block;
-  width: 1ch;
-  font-weight: 400;
-  color: var(--accent);
-}
-
-.resume-preview[open] summary::before {
-  content: "−";
-}
-
-/* The whole page fits in the window: no scrolling inside the preview. */
-.resume-preview img {
-  width: auto;
-  max-width: 100%;
-  max-height: calc(100vh - var(--header-h) - 5.5rem);
-  max-height: calc(100svh - var(--header-h) - 5.5rem);
-  margin-top: 0.5rem;
+.window-body img {
+  width: 100%;
   border: 1px solid var(--line);
   background: #ffffff;
+}
+
+.window-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
 }
 
 .edu-head {
@@ -1154,7 +1174,7 @@ button {
   .site-footer,
   .actions,
   .contact-fab,
-  .resume-preview {
+  .window {
     display: none !important;
   }
 
