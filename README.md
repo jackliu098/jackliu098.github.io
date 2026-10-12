@@ -1,6 +1,6 @@
 # jackjliu.com
 
-Personal site for Jack Liu. Plain HTML, CSS, and JavaScript with no build step. It is hosted on Cloudflare, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
+Personal site for Jack J. Liu. Plain HTML, CSS, and JavaScript with no build step. It is hosted on Cloudflare, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
 
 ## Files
 
@@ -18,8 +18,9 @@ assets/
   images/                Portrait and the Rutgers photo.
   resume/                Jack-Liu-Resume.pdf and its preview image.
   projects/              SpecSight presentation PDF and slide images. Future project files go here.
-  favicon.svg            Browser-tab icon.
+  favicon.svg            Browser-tab icon (the JL mark).
   apple-touch-icon.png   Home-screen icon on phones.
+favicon.ico              The same icon for browsers that only look for this file.
 robots.txt, sitemap.xml  For search engines.
 ```
 
