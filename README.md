@@ -1,22 +1,24 @@
 # jackjliu.com
 
-Personal site for Jack Liu. Plain HTML, CSS, and JavaScript: no framework, no build step, no paid services. It is hosted on Cloudflare Pages, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
+Personal site for Jack Liu. Plain HTML, CSS, and JavaScript with no build step. It is hosted on Cloudflare Pages, which publishes from the GitHub repository `jackliu098/jackliu098.github.io`.
 
 ## Files
 
 ```
-index.html              The page. Hero intro and About paragraphs are written here.
-404.html                Shown for broken links.
-css/styles.css          All styling. Colors and fonts are the variables at the top.
-js/content.js           Your content: links, projects, experience, education, skills, writing.
-js/main.js              Builds the page from content.js. You shouldn't need to edit it.
+index.html               The page. The introduction and About paragraphs are written here.
+projects/specsight.html  The SpecSight slides, shown one after another.
+404.html                 Shown for broken links.
+css/styles.css           All styling. Colors and fonts are the variables at the top.
+js/content.js            Your content: links, work, experience, coursework, involvement, events, education.
+js/main.js               Builds the page from content.js and runs the contact dialog. Rarely needs editing.
+functions/api/contact.js The contact form's server side. Runs on Cloudflare, not in the browser.
 assets/
-  images/               Profile photo and the Rutgers banner.
-  resume/               Jack-Liu-Resume.pdf
-  projects/             Put project PDFs, decks, and models here.
-  favicon.svg           Browser-tab icon.
-  apple-touch-icon.png  Home-screen icon on phones.
-robots.txt, sitemap.xml For search engines.
+  images/                Portrait and the Rutgers photo.
+  resume/                Jack-Liu-Resume.pdf and its preview image.
+  projects/              SpecSight presentation PDF and slide images. Future project files go here.
+  favicon.svg            Browser-tab icon.
+  apple-touch-icon.png   Home-screen icon on phones.
+robots.txt, sitemap.xml  For search engines.
 ```
 
 ## Preview on your computer
@@ -27,60 +29,72 @@ From this folder:
 python3 -m http.server 4173
 ```
 
-Then open http://localhost:4173. Stop it with Ctrl+C.
+Then open http://localhost:4173. Stop it with Ctrl+C. The contact form does not run in this preview, because its server side only exists on Cloudflare; the dialog shows the email and LinkedIn options instead.
 
 ## Updating the site
 
-Almost everything is in `js/content.js`. Each section there has a short comment and a copy-and-paste template. Edit, save, refresh the browser, then publish (see below).
+Most content is in `js/content.js`. Each part has a short comment and, where useful, a template to copy.
 
 | To change | Edit |
 | --- | --- |
-| Email, LinkedIn, GitHub, résumé link | `links` in `js/content.js` |
-| Career interests under the hero | `interests` |
-| Now / Next / Pursuing | `focus` |
-| Projects and research | `projects` |
-| Jobs, clubs, leadership | `experience` |
+| Email, LinkedIn, GitHub, resume link | `links` in `js/content.js` |
+| Selected work | `work` |
+| Jobs and leadership | `experience` |
+| Current courses | `coursework` |
+| Clubs and communities | `involvement` |
+| Upcoming events | `events` |
 | Schools, GPA, honors | `education` |
-| Coursework, certifications | `coursework`, `certifications` |
-| Skills and languages | `skills`, `languages` |
-| Articles and market notes | `writing` |
-| Hero intro and About paragraphs | `index.html` |
+| Introduction and About paragraphs | `index.html` |
 | Colors and fonts | top of `css/styles.css` |
 
-Things that start hidden and appear when you fill them in: the GitHub link, Relevant coursework, Certifications, and the whole Writing & Insights section (including its menu link). Project filter buttons appear once there are four or more projects in at least two categories.
+**Events remove themselves.** Each event has an `ends` date and drops off the page the day after. The site never says you attended. If you want to mention an event afterwards, write a real reflection and add it yourself.
 
-**Add a project.** Copy the template at the top of the `projects` list in `content.js`, fill it in, and put it first in the list. For a downloadable file, save it in `assets/projects/` and point a link at it:
+**Use exact status words.** "Registered", "Selected for the volunteer team", "Attend events" and "Member" mean different things. Write the one your evidence supports.
 
-```js
-links: [
-  { label: "Download report (PDF)", href: "assets/projects/nvda-initiation.pdf" },
-],
+**Replace the resume.** Save the new PDF over `assets/resume/Jack-Liu-Resume.pdf`, keeping the name. Then refresh the preview image so it matches:
+
+```bash
+sips -s format png assets/resume/Jack-Liu-Resume.pdf --out assets/resume/Jack-Liu-Resume-preview.png -Z 1650
 ```
 
-Use lowercase file names with hyphens and no spaces.
-
-**Add a job or leadership role.** Copy a `{ role: ... }` block into the right group in `experience`, newest first.
-
-**Replace the résumé.** Export the new PDF and save it over `assets/resume/Jack-Liu-Resume.pdf` with the same name. The download buttons and the on-page preview update on their own.
+Keep the resume to one page. The preview is sized to show a single page in full without scrolling.
 
 **Replace the photo.** Save a square image over `assets/images/jack-liu.jpg`. 800 × 800 pixels is plenty.
 
 **If the page looks half-empty after an edit,** `content.js` has a typo, usually a missing comma or quote. Open the browser console (right-click, Inspect, Console) and it will name the line.
 
-## Before going live
+## The SpecSight presentation
 
-- [ ] Rewrite the "why finance" paragraph in `index.html` in your own words. It is marked with a `DRAFT` comment.
-- [ ] The résumé PDF shows your phone number. For a public site, consider exporting a copy without it.
-- [ ] Replace or delete the two "Planned" project cards in `content.js` when your plans firm up.
-- [ ] Add your GitHub URL to `links.github` if you want it shown.
-- [ ] Confirm you are comfortable using the Rutgers building photo. If it came from a Rutgers page, check their usage terms or swap in a photo you took.
+`assets/projects/specsight-presentation.pdf` is the original class presentation with two changes only: the slide background is recolored to match the site, and the three advertisement slides are removed. Every other slide is untouched. `assets/projects/specsight/` holds one image per slide for the slides page, plus the cover thumbnail used on the home page.
+
+The full business plan, the original 25-slide file, and the financial model are deliberately not in this folder. This repository is public, so anything saved here can be read and copied by anyone, even if no page links to it.
+
+## The contact form
+
+The "Contact Jack" button opens a dialog. It always offers your email address, a copy button, and LinkedIn. It also shows a message form, but only once the form can really deliver: the site asks `/api/contact` whether it has been set up, and hides the form if not. A message is reported as sent only after the email service accepts it.
+
+To switch the form on:
+
+1. Create an account at [resend.com](https://resend.com) with the email address where you want to receive messages. The free plan was enough for a personal site when this was written; check their pricing page before relying on it.
+2. In Resend, create an API key.
+3. In the Cloudflare dashboard, open **Workers & Pages**, select this project, then **Settings → Variables and Secrets**, and add:
+   - `RESEND_API_KEY` as a **secret**: the key from step 2
+   - `CONTACT_TO` as text: the address that should receive messages
+4. Redeploy the site (push any change, or use **Deployments → Retry deployment**) so the function picks up the values.
+5. Open the live site, select **Contact Jack**, and send yourself a message.
+
+Until you verify your own domain in Resend, its test sender delivers only to the address you signed up with, so use that same address for `CONTACT_TO`. If you later verify `jackjliu.com` in Resend, add `CONTACT_FROM` (for example `Jack Liu website <hello@jackjliu.com>`).
+
+The function checks every message on the server, rejects obvious bots, and limits repeated sends from one visitor. For stronger protection, add a rate-limiting rule for `/api/contact` in Cloudflare under **Security**.
+
+Never paste the API key into any file in this folder.
 
 ## Publishing a change
 
 The folder structure matters: `index.html` looks for `css/styles.css`, `js/content.js`, `js/main.js`, and everything under `assets/`. Keep files in their folders.
 
 1. Open GitHub Desktop. It lists every file you changed.
-2. Type a short summary at the bottom left, for example "Add NVDA research report".
+2. Type a short summary at the bottom left.
 3. Select **Commit to main**.
 4. Select **Push origin**.
 
@@ -89,7 +103,7 @@ Cloudflare notices the push and republishes the site, usually within a minute. I
 ## How the hosting is set up
 
 - **Code:** GitHub repository `jackliu098/jackliu098.github.io`, branch `main`.
-- **Host:** a Cloudflare Pages project connected to that repository. No framework preset, no build command, default output directory.
-- **Domain:** `jackjliu.com` and `www.jackjliu.com` are attached under the project's **Custom domains** in the Cloudflare dashboard (**Workers & Pages**, then the project). Cloudflare manages the DNS records and HTTPS.
+- **Host:** a Cloudflare Pages project connected to that repository. No framework preset, no build command, default output directory. Cloudflare also runs the `functions` folder as the site's small server side.
+- **Domain:** `jackjliu.com` and `www.jackjliu.com` are attached under the project's **Custom domains**. Cloudflare manages the DNS records and HTTPS.
 
-Because the repository is named `jackliu098.github.io`, GitHub also publishes a copy at https://jackliu098.github.io. It is harmless: the page tells search engines that jackjliu.com is the real address. To switch it off, open the repository's **Settings → Pages** on GitHub.
+Because the repository is named `jackliu098.github.io`, GitHub also publishes a copy at https://jackliu098.github.io. The contact form does not work on that copy, since GitHub cannot run the `functions` folder; visitors there get the email and LinkedIn options. To switch the copy off, open the repository's **Settings → Pages** on GitHub.

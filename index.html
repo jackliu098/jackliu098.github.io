@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>Jack Liu | Finance Student at Rutgers Business School</title>
-  <meta name="description" content="Jack Liu is a finance student at Rutgers Business School–New Brunswick, Class of 2030, working toward a career in asset management and equity research. Projects, experience, and résumé.">
+  <meta name="description" content="Jack Liu is a first-year finance student at Rutgers Business School–New Brunswick, interested in asset management and equity research. Selected work, experience, and resume.">
   <meta name="author" content="Jack Liu">
   <link rel="canonical" href="https://jackjliu.com/">
 
@@ -13,7 +13,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Jack Liu">
   <meta property="og:title" content="Jack Liu | Finance Student at Rutgers Business School">
-  <meta property="og:description" content="Finance student at Rutgers Business School–New Brunswick, Class of 2030. Projects, experience, and résumé.">
+  <meta property="og:description" content="First-year finance student at Rutgers Business School–New Brunswick. Selected work, experience, and resume.">
   <meta property="og:url" content="https://jackjliu.com/">
   <meta property="og:image" content="https://jackjliu.com/assets/images/jack-liu.jpg">
   <meta property="og:image:alt" content="Jack Liu">
@@ -32,13 +32,12 @@
         theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
       root.setAttribute("data-theme", theme);
-      root.classList.add("js");
     })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -48,7 +47,7 @@
     "name": "Jack Liu",
     "url": "https://jackjliu.com/",
     "image": "https://jackjliu.com/assets/images/jack-liu.jpg",
-    "description": "Finance student at Rutgers Business School–New Brunswick, Class of 2030.",
+    "description": "First-year finance student at Rutgers Business School–New Brunswick.",
     "affiliation": {
       "@type": "CollegeOrUniversity",
       "name": "Rutgers Business School–New Brunswick"
@@ -74,11 +73,10 @@
       </button>
 
       <ul class="nav-menu" id="nav-menu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
-        <li data-nav="projects"><a href="#projects">Projects</a></li>
-        <li data-nav="experience"><a href="#experience">Experience</a></li>
-        <li><a href="#resume">Résumé</a></li>
-        <li data-nav="writing" hidden><a href="#writing">Writing</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -96,200 +94,124 @@
 
   <main id="main">
 
-    <!-- ===== Home ===== -->
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Finance · Rutgers Business School</p>
-          <h1 id="hero-title">Jack Liu</h1>
-          <p class="lead">
-            I'm a first-year finance student at Rutgers Business School, working toward a career on the
-            investing side of the industry. This site collects my projects, my experience, and the
-            research I'll be adding as I go.
+    <!-- ===== Introduction ===== -->
+    <section class="intro" id="top" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <h1 id="intro-title">Jack Liu</h1>
+          <p class="intro-line">Finance, B.S. · Rutgers Business School–New Brunswick · Expected May 2030</p>
+          <p class="intro-text">
+            I'm a first-year finance student at Rutgers, most interested in asset management and equity
+            research, and more broadly in how businesses are valued. This site collects my work so far,
+            starting with SpecSight, a business plan for a smart-eyewear concept that I wrote with a
+            classmate.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">View résumé</a>
-            <a class="btn btn-secondary" data-link="linkedin" href="https://www.linkedin.com/in/jackjliu" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-text" href="#contact">Get in touch</a>
+          <div class="actions">
+            <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">View resume</a>
+            <a class="btn btn-secondary" href="#contact" data-contact-open>Contact Jack</a>
+            <a class="text-link" data-link="linkedin" href="https://www.linkedin.com/in/jackjliu" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
-        <figure class="hero-photo">
-          <img src="assets/images/jack-liu.jpg" alt="Jack Liu in a navy suit, with the New York City skyline behind him" width="400" height="400" fetchpriority="high">
-        </figure>
-      </div>
-
-      <div class="container">
-        <dl class="facts">
-          <div>
-            <dt>School</dt>
-            <dd>Rutgers Business School–New Brunswick</dd>
-          </div>
-          <div>
-            <dt>Degree</dt>
-            <dd>B.S. in Finance</dd>
-          </div>
-          <div>
-            <dt>Graduating</dt>
-            <dd>May 2030</dd>
-          </div>
-          <div class="fact-wide" data-section="interests">
-            <dt>Career interests</dt>
-            <dd><ul class="inline-list" id="interests"></ul></dd>
-          </div>
-        </dl>
+        <img class="portrait" src="assets/images/jack-liu.jpg" alt="Jack Liu in a navy suit, with the New York City skyline behind him" width="400" height="400" fetchpriority="high">
       </div>
     </section>
 
-    <!-- ===== About ===== -->
+    <!-- ===== Selected work (from js/content.js) ===== -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container section-grid">
+        <h2 class="section-title" id="work-title">Selected work</h2>
+        <div class="section-body" id="work-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== Experience & leadership (from js/content.js) ===== -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container section-grid">
+        <h2 class="section-title" id="experience-title">Experience &amp; leadership</h2>
+        <div class="section-body rows" id="experience-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== About and life at Rutgers ===== -->
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="about-title">About</h2>
-        </header>
+        <h2 class="section-title" id="about-title">About</h2>
 
         <div class="section-body">
-          <div class="prose reveal">
+          <div class="prose">
             <p class="lede">
-              I'm a first-year student at Rutgers Business School–New Brunswick, studying finance. I came
-              to Rutgers from the Business Administration Magnet Program at Marlboro High School, where I
-              was a four-time DECA and FBLA state qualifier.
-            </p>
-
-            <!-- DRAFT: this paragraph on why finance was written from the résumé.
-                 Rewrite it in your own words. -->
-            <p>
-              The project that made finance concrete for me was SpecSight, a 120-plus-page business plan
-              for a conceptual smart-eyewear company. I built the financial model: 12-month and three-year
-              projections, balance-sheet forecasts, and a break-even analysis. What stayed with me is how
-              tightly the numbers depend on each other. Change one assumption about pricing or volume and
-              it shows up everywhere else, which is what makes a model worth arguing about.
+              I'm in my first year at Rutgers Business School–New Brunswick, studying finance. Asset
+              management and equity research interest me most, and I'm keeping an open mind about the rest
+              while I learn what each path involves from people who do the work.
             </p>
 
             <p>
-              My interests sit on the investing side of the industry: asset management, equity research,
-              and wealth and portfolio management, alongside investment banking and financial analysis.
-              I'm early enough that I haven't narrowed that list, and I'd rather learn what each path
-              involves from the people doing the work. In the meantime I'm building the fundamentals and
-              plan to publish my own research here as I finish it.
+              My interest goes back to eighth grade, when I was choosing a high school program. My father
+              travels to business meetings across Europe and Asia, and his example made me want a career
+              in business, so the Business Administration Magnet Program at Marlboro High School stood
+              out. Over four years it took me from stocks, portfolios, and Excel through accounting and
+              economics to ethics, entrepreneurship, and business law, with a speaker series that brought
+              in entrepreneurs, CPAs, and executives, including Steve Forbes. In senior year we spent six
+              months building a business plan, which is where SpecSight came from.
             </p>
 
             <p>
-              Most of what I know about leading people comes from outside the classroom. I spent two
-              years as president of Toastmasters M76 Club, running a seven-officer team and about 30
-              members. From 2021 to 2026 I led worship and ran AV at Monmouth Community Christian Church,
-              where I trained volunteers and mentored younger students. In the summer of 2026 I worked
-              front of house at Mango Mango and was promoted to head waiter in my first week.
-            </p>
-
-            <p>
-              Away from finance, I play tennis (I was a New Jersey state champion in high school), play
-              guitar, and keep a close eye on entrepreneurship and how new businesses get built. I speak
-              English and conversational Mandarin.
+              My Christian faith is a meaningful part of who I am. Faith and community have shaped how I
+              listen, build relationships, and serve, including five years leading worship and running AV
+              at my church. Outside class I play tennis and guitar, and I speak English and conversational
+              Mandarin.
             </p>
           </div>
 
-          <dl class="focus reveal" id="focus" data-section="focus"></dl>
+          <div class="subsection" id="rutgers">
+            <h3 class="sub-title">At Rutgers</h3>
+            <img class="wide-photo" src="assets/images/rutgers-business-school.jpg" alt="The Rutgers Business School building lit up at dusk" width="1200" height="300" loading="lazy">
+
+            <div class="sub-grid">
+              <div data-part="coursework" hidden>
+                <h4 class="label" id="coursework-label">Coursework</h4>
+                <ul class="plain-list" id="coursework-list"></ul>
+              </div>
+
+              <div data-part="involvement" hidden>
+                <h4 class="label">Involvement</h4>
+                <div class="rows rows--tight" id="involvement-list"></div>
+              </div>
+            </div>
+
+            <div data-part="events" hidden>
+              <h4 class="label">Looking ahead</h4>
+              <div class="rows rows--tight" id="events-list"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Projects & Research (cards come from js/content.js) ===== -->
-    <section class="section" id="projects" aria-labelledby="projects-title" data-section="projects">
-      <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="projects-title">Projects &amp; Research</h2>
-        </header>
-
-        <div class="section-body">
-          <p class="section-intro reveal">
-            Research, analysis, and business projects. I'll add equity research reports, stock pitches,
-            and valuation work here as I complete them.
-          </p>
-          <div class="filters reveal" id="project-filters" role="group" aria-label="Filter projects by type" hidden></div>
-          <div class="project-grid" id="project-grid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Experience & Leadership (from js/content.js) ===== -->
-    <section class="section" id="experience" aria-labelledby="experience-title" data-section="experience">
-      <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="experience-title">Experience &amp; Leadership</h2>
-        </header>
-
-        <div class="section-body" id="experience-list"></div>
-      </div>
-    </section>
-
-    <!-- ===== Résumé & Qualifications (from js/content.js) ===== -->
+    <!-- ===== Resume ===== -->
     <section class="section" id="resume" aria-labelledby="resume-title">
       <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="resume-title">Résumé &amp; Qualifications</h2>
-        </header>
+        <h2 class="section-title" id="resume-title">Resume</h2>
 
         <div class="section-body">
-          <div class="resume-bar reveal" data-link-wrap="resume">
-            <div>
-              <p class="resume-bar-title">Résumé</p>
-              <p class="resume-bar-note">One page, PDF</p>
-            </div>
-            <div class="resume-bar-actions">
-              <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" download>Download PDF</a>
-              <a class="btn btn-secondary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">Open in new tab <span aria-hidden="true">↗</span></a>
-            </div>
+          <div class="actions" data-link-wrap="resume">
+            <a class="btn btn-primary" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">View resume <span class="btn-note">PDF, one page</span></a>
+            <a class="text-link" data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" download>Download</a>
           </div>
 
-          <div class="qual-block" data-section="education">
-            <h3 class="label-heading">Education</h3>
-            <div class="edu-list" id="education-list"></div>
+          <!-- Closed by default. The image is sized so the whole page fits on screen. -->
+          <details class="resume-preview" data-link-wrap="resume">
+            <summary>Preview the resume here</summary>
+            <a data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <img data-src="assets/resume/Jack-Liu-Resume-preview.png" alt="Preview of Jack Liu's one-page resume. Select to open the PDF." width="1275" height="1649">
+            </a>
+          </details>
+
+          <div class="subsection" data-part="education" hidden>
+            <h3 class="label">Education</h3>
+            <div class="rows rows--tight" id="education-list"></div>
           </div>
-
-          <div class="qual-columns">
-            <div class="qual-block reveal" data-section="skills">
-              <h3 class="label-heading">Skills</h3>
-              <ul class="chips" id="skills-list"></ul>
-            </div>
-            <div class="qual-block reveal" data-section="languages">
-              <h3 class="label-heading">Languages</h3>
-              <ul class="chips" id="languages-list"></ul>
-            </div>
-          </div>
-
-          <div class="qual-block reveal" data-section="coursework" hidden>
-            <h3 class="label-heading">Relevant coursework</h3>
-            <ul class="chips" id="coursework-list"></ul>
-          </div>
-
-          <div class="qual-block reveal" data-section="certifications" hidden>
-            <h3 class="label-heading">Certifications</h3>
-            <ul class="cert-list" id="certifications-list"></ul>
-          </div>
-
-          <!-- Filled in by main.js on screens wide enough to read it. -->
-          <div class="qual-block resume-preview" id="resume-preview" hidden>
-            <h3 class="label-heading">Preview</h3>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Writing & Insights (hidden until js/content.js has entries) ===== -->
-    <section class="section" id="writing" aria-labelledby="writing-title" data-section="writing" hidden>
-      <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="writing-title">Writing &amp; Insights</h2>
-        </header>
-
-        <div class="section-body">
-          <ul class="writing-list" id="writing-list"></ul>
         </div>
       </div>
     </section>
@@ -297,35 +219,36 @@
     <!-- ===== Contact ===== -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container section-grid">
-        <header class="section-head">
-          <p class="section-num" aria-hidden="true"></p>
-          <h2 id="contact-title">Contact</h2>
-        </header>
+        <h2 class="section-title" id="contact-title">Contact</h2>
 
         <div class="section-body">
-          <p class="contact-lede reveal">
+          <p class="lede">
             I'm glad to hear from recruiters, Rutgers alumni, and anyone in the industry who is open to a
-            conversation. Email is the fastest way to reach me.
+            conversation.
           </p>
 
-          <ul class="contact-list reveal">
-            <li data-link-wrap="email">
-              <span class="contact-label">Email</span>
-              <a data-link="email" data-link-text href="mailto:jjl441@scarletmail.rutgers.edu">jjl441@scarletmail.rutgers.edu</a>
-            </li>
-            <li data-link-wrap="linkedin">
-              <span class="contact-label">LinkedIn</span>
-              <a data-link="linkedin" data-link-text href="https://www.linkedin.com/in/jackjliu" target="_blank" rel="noopener noreferrer">linkedin.com/in/jackjliu</a>
-            </li>
-            <li data-link-wrap="github" hidden>
-              <span class="contact-label">GitHub</span>
-              <a data-link="github" data-link-text href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </li>
-            <li data-link-wrap="resume">
-              <span class="contact-label">Résumé</span>
-              <a data-link="resume" href="assets/resume/Jack-Liu-Resume.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
-            </li>
-          </ul>
+          <div class="actions">
+            <button class="btn btn-primary" type="button" data-contact-open hidden>Write to Jack</button>
+          </div>
+
+          <dl class="contact-list">
+            <div data-link-wrap="email">
+              <dt>Email</dt>
+              <dd>
+                <a data-link="email" data-link-text href="mailto:jjl441@scarletmail.rutgers.edu">jjl441@scarletmail.rutgers.edu</a>
+                <button class="text-btn" type="button" data-copy-email hidden>Copy</button>
+              </dd>
+            </div>
+            <div data-link-wrap="linkedin">
+              <dt>LinkedIn</dt>
+              <dd><a data-link="linkedin" data-link-text href="https://www.linkedin.com/in/jackjliu" target="_blank" rel="noopener noreferrer">linkedin.com/in/jackjliu</a></dd>
+            </div>
+            <div data-link-wrap="github" hidden>
+              <dt>GitHub</dt>
+              <dd><a data-link="github" data-link-text href="#" target="_blank" rel="noopener noreferrer">GitHub</a></dd>
+            </div>
+          </dl>
+          <p class="sr-status" role="status" aria-live="polite" id="copy-status"></p>
         </div>
       </div>
     </section>
@@ -337,10 +260,6 @@
       <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
-
-  <noscript>
-    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
-  </noscript>
 
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>

@@ -1,18 +1,18 @@
 /* ==========================================================================
    SITE CONTENT
 
-   Everything that changes over time lives in this file: links, projects,
-   experience, education, coursework, certifications, skills, and writing.
-   Edit the text between the quotes, save, and push. No build step.
+   The lists on the site are built from this file: selected work, experience,
+   coursework, involvement, upcoming events, and education. Edit the text
+   between the quotes, save, and publish. No build step.
 
    Rules of thumb:
      - Every entry sits between { curly braces } and ends with a comma.
      - Text goes inside "double quotes". To use a quote mark inside text,
        write \" instead of ".
      - Lists are shown in the order they appear here, so put the newest first.
-     - A section with an empty list [] hides itself on the site.
+     - An empty list [] hides that part of the page.
 
-   The hero introduction and the About paragraphs are in index.html.
+   The introduction and the About paragraphs are written in index.html.
    ========================================================================== */
 
 window.SITE = {
@@ -26,213 +26,169 @@ window.SITE = {
     resume: "assets/resume/Jack-Liu-Resume.pdf",
   },
 
-  /* ---- Career interests (shown under the hero) --------------------------- */
-  interests: [
-    "Asset management",
-    "Equity research",
-    "Wealth management",
-    "Portfolio management",
-    "Investment banking",
-    "Financial analysis",
-  ],
+  /* ---- Contact form --------------------------------------------------------
+     The form posts to this address, which is the function in
+     functions/api/contact.js. It only appears once that function is set up
+     (see README). Until then visitors get the email and LinkedIn options. */
+  contact: {
+    endpoint: "/api/contact",
+  },
 
-  /* ---- Now / Next / Pursuing (shown in About) ---------------------------- */
-  focus: [
-    {
-      label: "Now",
-      text: "First-year finance student at Rutgers Business School–New Brunswick.",
-    },
-    {
-      label: "Next",
-      text: "Writing my first independent equity research report and stock pitch, and publishing them here.",
-    },
-    {
-      label: "Pursuing",
-      text: "An early-career path in asset management, equity research, or a related investing role.",
-    },
-  ],
-
-  /* ---- Projects & research -------------------------------------------------
-     Copy this template to add a project. Only `title` and `summary` are
-     required; delete any line you don't need.
+  /* ---- Selected work --------------------------------------------------------
+     Copy this template to add a project. Only add work that is finished
+     enough for a visitor to open and read.
 
      {
        title: "Company Name (TICKER): Initiating Coverage",
-       category: "Equity research",   // used for the filter buttons
-       status: "Completed",           // "Completed", "In progress", or "Planned"
-       date: "Mar 2027",
-       featured: true,                // true = full-width card
-       summary: "One or two sentences on what this is and what you concluded.",
-       metrics: [                     // up to four headline numbers
-         { value: "$142", label: "Price target" },
+       kind: "Equity research report",
+       date: "March 2027",
+       credit: "",                    // e.g. "With Jane Doe" for team work
+       summary: "Two or three sentences on what it is and what you concluded.",
+       part: "",                      // for team work: what you personally did
+       figures: [                     // optional headline numbers, kept short
+         { value: "$142", label: "price target" },
        ],
-       highlights: [
-         "A specific thing you did or found.",
-       ],
-       tags: ["DCF", "Comparable companies"],
-       links: [                       // put the file in assets/projects/
-         { label: "Download report (PDF)", href: "assets/projects/your-file.pdf" },
+       image: "assets/projects/your-cover.jpg",   // optional
+       imageAlt: "What the image shows",
+       links: [
+         { label: "Read the report (PDF)", href: "assets/projects/your-file.pdf" },
        ],
      },
   -------------------------------------------------------------------------- */
-  projects: [
+  work: [
     {
-      title: "SpecSight: Business Plan & Financial Analysis",
-      category: "Business plan",
-      status: "Completed",
-      date: "Jan 2026 – Jun 2026",
-      featured: true,
+      title: "SpecSight",
+      kind: "Academic business plan for a conceptual company",
+      date: "January to June 2026",
+      credit: "With Christos Goudas",
       summary:
-        "Financial model for a 120+ page business plan for a conceptual smart-eyewear company, covering projections, balance-sheet forecasts, break-even analysis, and competitive positioning.",
-      metrics: [
-        { value: "~$834K", label: "Year 1 revenue modeled" },
-        { value: "~$904K", label: "Break-even sales threshold" },
-        { value: "3 years", label: "Projection horizon" },
-        { value: "3 × 11", label: "Competitors × criteria compared" },
+        "A business plan for a smart-eyewear concept, written with a classmate for an Honors Entrepreneurship course. The full plan runs to more than 120 pages and covers the market, three competitors, pricing, operations, and financial projections, including startup funding, a 12-month and three-year forecast, and a break-even analysis.",
+      part:
+        "I led the project as CEO, built most of the financial projections, and wrote most of the presentation.",
+      figuresNote: "Modeled, not actual",
+      figures: [
+        { value: "$834,400", label: "Year 1 sales in the forecast" },
+        { value: "$903,962", label: "break-even sales level" },
       ],
-      highlights: [
-        "Built 12-month and 3-year projections, balance-sheet forecasts, and a break-even analysis.",
-        "Modeled about $834K in Year 1 revenue against a break-even sales threshold of about $904K to evaluate profitability, operating requirements, and scalability.",
-        "Compared 3 eyewear companies across 11 criteria, including pricing, product features, distribution, customer service, and target markets, to inform SpecSight's market positioning.",
-      ],
-      tags: ["Financial modeling", "Forecasting", "Break-even analysis", "Competitive analysis"],
+      image: "assets/projects/specsight/cover-thumb.jpg",
+      imageAlt: "Cover slide of the SpecSight presentation: round glasses with colored lenses above the name SpecSight",
       links: [
-        // { label: "Download business plan (PDF)", href: "assets/projects/specsight-business-plan.pdf" },
+        { label: "View presentation", note: "22 slides", href: "projects/specsight.html" },
+        { label: "Download presentation", note: "PDF, 2.1 MB", href: "assets/projects/specsight-presentation.pdf", download: true },
       ],
-    },
-
-    /* PLACEHOLDERS: the two cards below describe work that is planned, not
-       finished. Replace each with the real project when it exists, or delete
-       it if plans change. */
-    {
-      title: "Equity research report",
-      category: "Equity research",
-      status: "Planned",
-      summary:
-        "A full write-up on one public company: the business, its industry, a valuation, and an investment thesis. The report will be linked here once it is finished.",
-    },
-    {
-      title: "Stock pitch",
-      category: "Stock pitch",
-      status: "Planned",
-      summary:
-        "A short buy or sell recommendation with a supporting model and the main risks to the thesis.",
     },
   ],
 
   /* ---- Experience & leadership ---------------------------------------------
-     Add a new role by copying one of the { role: ... } blocks into the right
-     group, newest first. Add a new group (for example "Campus involvement")
-     by copying a whole { group: ..., items: [...] } block.
-  -------------------------------------------------------------------------- */
+     One or two sentences per role. Say who a result belongs to: you, your
+     team, or the organization. */
   experience: [
     {
-      group: "Professional experience",
-      items: [
-        {
-          role: "Head Waiter, Front of House",
-          org: "Mango Mango",
-          location: "Morganville, NJ",
-          date: "Jun 2026 – Sep 2026",
-          bullets: [
-            "Promoted to Head Waiter within the first week, coordinating a 5-person front-of-house team that served 400–500 customers during a 13-hour launch-period day and set a single-day sales record of about $15K.",
-            "Directed front-of-house workflows across 12 continuously occupied tables, delegating cashier, table-turnover, kitchen-communication, and order-fulfillment responsibilities.",
-          ],
-        },
-      ],
+      role: "Head Waiter, Front of House",
+      org: "Mango Mango",
+      location: "Morganville, NJ",
+      date: "Jun – Sep 2026",
+      text:
+        "Promoted to head waiter in my first week. I coordinated a five-person front-of-house team that served 400 to 500 customers on a 13-hour launch-period day, when the restaurant set a single-day sales record of about $15,000.",
     },
     {
-      group: "Leadership & community",
-      items: [
-        {
-          role: "President",
-          org: "Toastmasters M76 Club",
-          location: "Marlboro, NJ",
-          date: "Jun 2024 – Jun 2026",
-          bullets: [
-            "Led a 7-officer executive team and an organization of about 30 members across 30+ meetings, managing agendas, scheduling, and weekly leadership assignments.",
-          ],
-        },
-        {
-          role: "Worship Leader, AV Technician & Youth Mentor",
-          org: "Monmouth Community Christian Church – Joywok",
-          location: "Holmdel, NJ",
-          date: "Jan 2021 – Jun 2026",
-          bullets: [
-            "Directed weekly worship and technical production for about 30 attendees on average and 100+ at major events, supervising a 3-person AV team.",
-            "Trained 5 AV volunteers and mentored 15+ youth in production workflows, stage professionalism, technical setup, and worship leadership.",
-          ],
-        },
-        {
-          role: "Monmouth Community Christian Church Representative",
-          org: "Thriving Immigrant Congregations Initiative",
-          location: "Chicago, IL",
-          date: "Jun 2024",
-          bullets: [
-            "Represented MCCC at a national intergenerational leadership initiative, speaking in workshops and on a large-group panel before about 150 participants on youth-adult engagement.",
-          ],
-        },
-      ],
+      role: "President",
+      org: "Toastmasters M76 Club",
+      location: "Marlboro, NJ",
+      date: "Jun 2024 – Jun 2026",
+      text:
+        "Led a seven-officer executive team and a club of about 30 members through more than 30 meetings, managing agendas, scheduling, and weekly leadership assignments.",
+    },
+    {
+      role: "Worship Leader, AV Technician & Youth Mentor",
+      org: "Monmouth Community Christian Church – Joywok",
+      location: "Holmdel, NJ",
+      date: "Jan 2021 – Jun 2026",
+      text:
+        "Directed weekly worship and technical production for about 30 attendees, and more than 100 at major events, supervising a three-person AV team. Trained five AV volunteers and mentored more than 15 younger students.",
+    },
+    {
+      role: "Church Representative",
+      org: "Thriving Immigrant Congregations Initiative",
+      location: "Chicago, IL",
+      date: "Jun 2024",
+      text:
+        "Represented my church at a national intergenerational leadership initiative, speaking in workshops and on a large-group panel before about 150 participants.",
     },
   ],
 
-  /* ---- Education ---------------------------------------------------------- */
+  /* ---- Coursework -----------------------------------------------------------
+     Official course titles only. No grades, professors, or meeting times. */
+  coursework: {
+    term: "Fall 2026",
+    courses: [
+      "Introduction to Microeconomics",
+      "Introduction to Marketing",
+      "Introduction to Supply Chain Management",
+      "Finance for Personal and Professional Success",
+      "The Structure of Information",
+    ],
+  },
+
+  /* ---- Involvement ----------------------------------------------------------
+     Describe what you actually do. Attending is not the same as membership,
+     and applying is not the same as being accepted. */
+  involvement: [
+    {
+      name: "InterVarsity Christian Fellowship",
+      text: "I take part in fellowship, Bible studies, and small- and large-group gatherings, and attended the Selah retreat at Lake Champion.",
+    },
+    {
+      name: "Epic Christian Fellowship",
+      text: "I take part in its gatherings.",
+    },
+    {
+      name: "Scholars of Finance",
+      text: "I attend events and networking sessions when my schedule allows.",
+    },
+  ],
+
+  /* ---- Upcoming events ------------------------------------------------------
+     Each event disappears from the site by itself the day after `ends`
+     (written year-month-day). `status` must match the evidence you have:
+     "Interested", "Registered", "Selected as a volunteer", and so on.
+     `why` is one or two sentences, in your words, on why it interests you.
+     After an event, either delete it or move it elsewhere with a real
+     reflection in your own words. */
+  events: [
+    {
+      name: "Mastering the Art of Networking: A Career Conference & Etiquette Dinner",
+      when: "Tuesday, November 17, 2026",
+      where: "Busch Student Center, Rutgers University, Piscataway",
+      status: "Registered",
+      why: "I want to meet people working in finance, hear what they are doing, and get feedback from more experienced professionals on how I can grow. It is also the evening before the Venture Summit, so it is a good place to practice introducing myself.",
+      ends: "2026-11-17",
+      href: "",
+    },
+    {
+      name: "The New York Venture Summit",
+      when: "November 18 and 19, 2026",
+      where: "New York City, presented by youngStartup Ventures",
+      status: "Selected for the volunteer team",
+      why: "I'll be volunteering, and I hope to meet founders and investors and start relationships I can keep building. As a first-year student, I want to take opportunities like this as early as I can.",
+      ends: "2026-11-19",
+      href: "https://www.youngstartup.com/",
+    },
+  ],
+
+  /* ---- Education ------------------------------------------------------------ */
   education: [
     {
       school: "Rutgers Business School–New Brunswick",
-      detail: "Rutgers, The State University of New Jersey",
-      degree: "Bachelor of Science, Finance",
-      location: "New Brunswick, NJ",
+      line: "Bachelor of Science in Finance",
       date: "Expected May 2030",
-      image: "assets/images/rutgers-business-school.jpg",
-      imageAlt: "The Rutgers Business School building lit up at dusk",
-      notes: [
-        // "GPA: 0.00 / 4.00",
-        // "Dean's List, Fall 2026",
-      ],
+      detail: "",                     // e.g. "GPA 0.00 / 4.00; Dean's List, Fall 2026"
     },
     {
       school: "Marlboro High School",
-      degree: "Business Administration Magnet Program",
-      location: "Marlboro, NJ",
-      date: "Jun 2026",
-      notes: [
-        "Weighted GPA: 4.91 / 5.00",
-        "DECA & FBLA State Qualifier (4×)",
-        "NJ Tennis State Champion",
-        "AP Scholar with Distinction",
-        "National Honor Society",
-      ],
+      line: "Business Administration Magnet Program",
+      date: "June 2026",
+      detail: "Weighted GPA 4.91 / 5.00. AP Scholar with Distinction, DECA and FBLA state qualifier (4×), NJ tennis state champion, National Honor Society.",
     },
   ],
-
-  /* ---- Relevant coursework (hidden while empty) ---------------------------
-     e.g. "Introduction to Financial Accounting", "Microeconomics" */
-  coursework: [],
-
-  /* ---- Certifications (hidden while empty) ---------------------------------
-     Only list certifications you have finished.
-     { name: "Bloomberg Market Concepts", issuer: "Bloomberg", date: "Nov 2026",
-       href: "https://link-to-certificate" },                                   */
-  certifications: [],
-
-  /* ---- Skills & languages -------------------------------------------------- */
-  skills: [
-    "Microsoft Excel",
-    "Financial modeling",
-    "Financial analysis",
-    "Market research",
-    "Competitive analysis",
-  ],
-  languages: [
-    "English (fluent)",
-    "Mandarin Chinese (conversational)",
-  ],
-
-  /* ---- Writing & insights (whole section hidden while empty) ---------------
-     { title: "What I learned building my first DCF", date: "Feb 2027",
-       kind: "Reflection",            // short label, e.g. "Market note", "Company analysis"
-       summary: "One or two sentences on what the piece covers.",
-       href: "assets/writing/first-dcf.pdf" },   // a PDF here, or any web link */
-  writing: [],
 };
