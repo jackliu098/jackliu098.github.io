@@ -3,7 +3,10 @@
   // Must match the Worker's name in the Cloudflare dashboard.
   "name": "jackliu098-github-io",
   "main": "worker/index.js",
-  "compatibility_date": "2026-01-01",
+  "compatibility_date": "2026-10-06",
+
+  // Keeps request logs available in the Cloudflare dashboard (already on for this site).
+  "observability": { "enabled": true },
 
   // Keep the variables and secrets you add in the dashboard when the site is republished.
   "keep_vars": true,
